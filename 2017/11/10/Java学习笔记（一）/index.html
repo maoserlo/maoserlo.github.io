@@ -7,26 +7,20 @@
   
   
   
-  <title>GitHub搭建博客配置SSH | 空旷在远方</title>
+  <title>Java学习笔记（一） | 空旷在远方</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="GitHub搭建博客配置SSH： 设置SSH keys">
-<meta name="keywords" content="博客">
+  <meta name="description" content="Java学习笔记（一）： 1.1995sun公司正式发">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GitHub搭建博客配置SSH">
-<meta property="og:url" content="https://maoserlo.github.io/2017/10/30/GitHub搭建博客配置SSH/index.html">
+<meta property="og:title" content="Java学习笔记（一）">
+<meta property="og:url" content="https://maoserlo.github.io/2017/11/10/Java学习笔记（一）/index.html">
 <meta property="og:site_name" content="空旷在远方">
-<meta property="og:description" content="GitHub搭建博客配置SSH： 设置SSH keys">
+<meta property="og:description" content="Java学习笔记（一）： 1.1995sun公司正式发">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://maoserlo.github.io/img/02/01.png">
-<meta property="og:image" content="https://maoserlo.github.io/img/02/02.png">
-<meta property="og:image" content="https://maoserlo.github.io/img/02/03.png">
-<meta property="og:image" content="https://maoserlo.github.io/img/02/04.png">
-<meta property="og:image" content="https://maoserlo.github.io/img/02/05.png">
-<meta property="og:updated_time" content="2017-12-02T09:09:08.436Z">
+<meta property="og:updated_time" content="2017-12-03T14:28:32.430Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GitHub搭建博客配置SSH">
-<meta name="twitter:description" content="GitHub搭建博客配置SSH： 设置SSH keys">
-<meta name="twitter:image" content="https://maoserlo.github.io/img/02/01.png">
+<meta name="twitter:title" content="Java学习笔记（一）">
+<meta name="twitter:description" content="Java学习笔记（一）： 1.1995sun公司正式发">
   
     <link rel="alternative" href="/atom.xml" title="空旷在远方" type="application/atom+xml">
   
@@ -233,11 +227,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-GitHub搭建博客配置SSH" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Java学习笔记（一）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2017/10/30/GitHub搭建博客配置SSH/" class="article-date">
-      <time datetime="2017-10-30T14:35:37.000Z" itemprop="datePublished">2017-10-30</time>
+      <a  href="/2017/11/10/Java学习笔记（一）/" class="article-date">
+      <time datetime="2017-11-10T14:35:37.000Z" itemprop="datePublished">2017-11-10</time>
 </a>
 
     </div>
@@ -251,7 +245,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      GitHub搭建博客配置SSH
+      Java学习笔记（一）
     </h1>
   
 
@@ -263,7 +257,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -273,41 +267,79 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong> GitHub搭建博客配置SSH：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>设置SSH keys<br><a id="more"></a></excerpt></p>
+        <p><strong> Java学习笔记（一）：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>1.1995sun公司正式发<br><a id="more"></a></excerpt></p>
 <p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h2 id="设置SSH-keys"><a href="#设置SSH-keys" class="headerlink" title="设置SSH keys"></a>设置SSH keys</h2><h3 id="1-检查是否存在SSH"><a href="#1-检查是否存在SSH" class="headerlink" title="1.检查是否存在SSH"></a>1.检查是否存在SSH</h3><p>在Git Bash输入以下指令（任意位置点击鼠标右键），检查是否已经存在了SSH keys。</p>
-<p><code>ls -al ~/.ssh</code></p>
-<p>如果不存在就没有关系，如果存在的话，直接删除.ssh文件夹里面所有文件：<br><img src="/img/02/01.png" alt=""></p>
-<h3 id="2-生成SSH"><a href="#2-生成SSH" class="headerlink" title="2.生成SSH"></a>2.生成SSH</h3><p>输入以下指令（邮箱就是你注册Github时候的邮箱）后，回车：</p>
-<p><code>ssh-keygen -t rsa -C &quot;angelen10@163.com&quot;</code></p>
-<p><img src="/img/02/02.png" alt=""></p>
-<p>然后它会提示要你输入passphrase（如上图，我没有输入直接回车，如果你输入的话，要记得，到时候会用到）。之后，如果出现类似下图：<br><img src="/img/02/03.png" alt=""></p>
-<p>然后键入以下指令：</p>
-<p><code>ssh-agent -s</code></p>
-<p>继续输入指令：</p>
-<p><code>ssh-add ~/.ssh/id_rsa</code></p>
-<p>输入之后，在我这里是出错了，不知道你的有没有出错。<br><img src="/img/02/04.png" alt=""></p>
-<p>如果你的也是这样子出错了的话，就输入以下指令：</p>
-<p><code>eval &#39;ssh-agent -s&#39;</code></p>
-<p><code>ssh-add</code><br><img src="/img/02/05.png" alt=""></p>
-<h3 id="3-添加SSH-key到Github账户"><a href="#3-添加SSH-key到Github账户" class="headerlink" title="3.添加SSH key到Github账户"></a>3.添加SSH key到Github账户</h3><p>到了这一步，就可以添加SSH key到你的Github账户了(也可以参考使用Hexo+Github搭建博客中描述的配置ssh到GitHub<a href="http://maoser.club/2017/09/29/%E4%BD%BF%E7%94%A8Hexo+Github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener">使用Hexo+Github搭建博客</a>)。</p>
-<p>键入以下指令，拷贝Key（先拷贝了，等一下可以直接粘贴）：</p>
-<p><code>clip &lt; ~/.ssh/id_rsa.pub</code></p>
-<p>然后到Github里面，点击右上角的设置图标：</p>
-<p>在Settings sidebar那里，点击SSH keys：</p>
-<p>输入Title，作为这个key的描述吧（你可以输入Personal MacBook Air，瞬间高大上）</p>
-<p>然后这个Key就是刚刚拷贝的，你直接粘贴就好（也可以文本打开以下文件）：</p>
-<p>点击Add Key：</p>
-<p>输入你的Github密码即可完成SSH Key的添加</p>
-<h3 id="4-最后的部署"><a href="#4-最后的部署" class="headerlink" title="4.最后的部署"></a>4.最后的部署</h3><p>最后测试一下，键入以下命令：<br><code>ssh -T git@github.com</code></p>
-<p>你可能会看到有警告，没事，输入“yes”就好。</p>
-<p>最后一步，快要成功了，键入指令：</p>
-<p><code>hexo generate</code><br><code>hexo deploy</code></p>
-<p>OK，我们的博客就已经完全搭建起来了，在浏览器输入（当然，是你的用户名）：<br><a href="http://maoserlo.github.io/"></a></p>
-<h3 id="5-注意"><a href="#5-注意" class="headerlink" title="5.注意"></a>5.注意</h3><p>每次修改本地文件后，</p>
-<p>需要键入<code>hexo generate</code>才能保存。每次使用命令时，都要在你搭建博客的目录下。<br>每次想要上传文件到Github时，<br>就应该先键入<code>hexo generate</code>保存之后，<br>再键入<code>hexo deploy</code></p>
-<h3 id="6-致谢"><a href="#6-致谢" class="headerlink" title="6.致谢"></a>6.致谢</h3><p>感谢 “百度百科“ 博客极具有参考性的资料：<a href="http://jingyan.baidu.com/article/d8072ac47aca0fec95cefd2d.html" target="_blank" rel="noopener">史上最详细“截图”搭建Hexo博客并部署到Github</a></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h1 id="Java笔记"><a href="#Java笔记" class="headerlink" title="Java笔记"></a>Java笔记</h1><h2 id="一、Java-简介"><a href="#一、Java-简介" class="headerlink" title="一、Java 简介"></a>一、Java 简介</h2><h6 id="1-1995sun公司正式发布java第一个版本"><a href="#1-1995sun公司正式发布java第一个版本" class="headerlink" title="1.1995sun公司正式发布java第一个版本"></a>1.1995sun公司正式发布java第一个版本</h6><h6 id="2-Java开发工具："><a href="#2-Java开发工具：" class="headerlink" title="2.Java开发工具："></a>2.Java开发工具：</h6><p>a.jcreator    </p>
+<p>b.jbuilder</p>
+<p>c.netbean </p>
+<p>d.eclipse</p>
+<h6 id="3-JDK："><a href="#3-JDK：" class="headerlink" title="3.JDK："></a>3.JDK：</h6><p>a.jre（java运行环境）</p>
+<p>b.java工具包（Java编译器javac.exe 解释执行器java.exe  </p>
+<p>c.Java类库（常用150多个）</p>
+<h6 id="4-jre是java运行环境，运行java需要配置jre环境"><a href="#4-jre是java运行环境，运行java需要配置jre环境" class="headerlink" title="4.jre是java运行环境，运行java需要配置jre环境"></a>4.jre是java运行环境，运行java需要配置jre环境</h6><h6 id="5-jdk配置：添加环境变量（见附一win10环境配制）"><a href="#5-jdk配置：添加环境变量（见附一win10环境配制）" class="headerlink" title="5.jdk配置：添加环境变量（见附一win10环境配制）"></a>5.jdk配置：添加环境变量（见附一win10环境配制）</h6><h2 id="二、java方法"><a href="#二、java方法" class="headerlink" title="二、java方法"></a>二、java方法</h2><h6 id="1-方法：完成特定功能的代码块"><a href="#1-方法：完成特定功能的代码块" class="headerlink" title="1.方法：完成特定功能的代码块"></a>1.方法：完成特定功能的代码块</h6><h6 id="2-方法就是函数"><a href="#2-方法就是函数" class="headerlink" title="2.方法就是函数"></a>2.方法就是函数</h6><h6 id="3-方法格式："><a href="#3-方法格式：" class="headerlink" title="3.方法格式："></a>3.方法格式：</h6><pre><code>修饰符 返回值类型 方法名（参数类型 参数名1，参数类型 参数名2…）{
+方法体语句
+Return 返回值
+}
+</code></pre><h6 id="4-详细解释："><a href="#4-详细解释：" class="headerlink" title="4.详细解释："></a>4.详细解释：</h6><p>a.修饰符</p>
+<p>b.返回值类型：功能结果的数据类型</p>
+<p>c.方法名：符合命名规则即可，方便我们调用</p>
+<p>d.参数：</p>
+<pre><code>实际参数：实际参与运算
 
+形式参数：方法定义上的，用于接收实际参数
+</code></pre><p>e.参数类型：参数的数据类型</p>
+<p>f.参数名：就是变量名</p>
+<p>g.方法体语句：就是完成功能的代码</p>
+<p>h.Return：结束方法</p>
+<p>i.返回值：功能的结果，有return带给调用者</p>
+<h6 id="5-方法的执行特点：不调用，不执行"><a href="#5-方法的执行特点：不调用，不执行" class="headerlink" title="5.方法的执行特点：不调用，不执行"></a>5.方法的执行特点：不调用，不执行</h6><h6 id="6-方法的调用方式："><a href="#6-方法的调用方式：" class="headerlink" title="6.方法的调用方式："></a>6.方法的调用方式：</h6><p>a.单独调用：</p>
+<p>b.输出调用</p>
+<p>c.复制调用</p>
+<pre><code>举例：
+    //需求：求两个数据之和的案例
+class FunctionDemo {
+    public static void main(String[] args) {
+        int x = 10;
+        int y = 20;
+
+        //方式1：单独调用
+        //sum(x,y);
+
+        //方式2：输出调用
+        //System.out.println(sum(x,y));
+
+        //方式3：赋值调用
+        int result = sum(x,y);
+        //result在这里可以进行操作
+        System.out.println(result);
+    }
+public static int sum(int a,int b) {
+        return a + b;
+    }
+}
+</code></pre><h6 id="7-方法的注意事项："><a href="#7-方法的注意事项：" class="headerlink" title="7.方法的注意事项："></a>7.方法的注意事项：</h6><p>a.方法与方法是平级关系，不能嵌套使用</p>
+<p>b.如果方法有明确的返回值，需用return带回一个值</p>
+<p>8.方法重载的特点：</p>
+<p>a.与返回值无关，只看方法名和参数列表</p>
+<p>b.在调用时，虚拟机通过参数列表的不同来区分同方法</p>
+<h2 id="三、面向对象"><a href="#三、面向对象" class="headerlink" title="三、面向对象"></a>三、面向对象</h2><h6 id="1-面向对象：面向对象是基于面向过程的编程思想"><a href="#1-面向对象：面向对象是基于面向过程的编程思想" class="headerlink" title="1.面向对象：面向对象是基于面向过程的编程思想"></a>1.面向对象：面向对象是基于面向过程的编程思想</h6><h6 id="2-面向对象的思想特点："><a href="#2-面向对象的思想特点：" class="headerlink" title="2.面向对象的思想特点："></a>2.面向对象的思想特点：</h6><p>a.是一种更符合我们思考习惯的思想</p>
+<p>b.把复杂的事情简单化</p>
+<p>c.让我们从执行者变成了指挥者</p>
+<h6 id="3-类与对象"><a href="#3-类与对象" class="headerlink" title="3.类与对象:"></a>3.类与对象:</h6><p>a.现实世界的事物<br>    属性    事物的基本描述<br>            行为    事物的功能<br>b.Java语言中最基本的单位是类。所以，我们要用类来体现事物</p>
+<p>c.类<br>            成员变量    事物属性<br>            成员方法    事物行为</p>
+<p>d.类：是一组相关的属性和行为的集合。是一个抽象的概念。<br>对象：是该类事物的具体存在，是一个具体的实例。(对象)</p>
+<pre><code>举例：
+  学生：类
+  班长：对象
+</code></pre><h6 id="4-类的定义及使用"><a href="#4-类的定义及使用" class="headerlink" title="4.类的定义及使用"></a>4.类的定义及使用</h6><p>a.类的定义<br>    成员变量    定义格式和以前一样，就是位置不同，在类中，方法外。<br>    成员方法    定义格式和以前一样，就是去掉了static。</p>
+<p>b.使用类的内容</p>
+<pre><code>·创建对象? 格式
+类名 对象名 =  new 类名();
+
+·使用成员变量和成员方法
+    对象名.成员变量
+    对象名.成员方法()
+</code></pre>
       
     </div>
     
@@ -315,13 +347,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2017/10/30/GitHub搭建博客配置SSH/">GitHub搭建博客配置SSH</a></p>
+        <p><span>本文标题:</span><a  href="/2017/11/10/Java学习笔记（一）/">Java学习笔记（一）</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Maoser.Lo 的个人博客">Maoser.Lo</a></p>
-        <p><span>发布时间:</span>2017年10月30日 - 22时35分</p>
-        <p><span>最后更新:</span>2017年12月02日 - 17时09分</p>
+        <p><span>发布时间:</span>2017年11月10日 - 22时35分</p>
+        <p><span>最后更新:</span>2017年12月03日 - 22时28分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/10/30/GitHub搭建博客配置SSH/" title="GitHub搭建博客配置SSH">https://maoserlo.github.io/2017/10/30/GitHub搭建博客配置SSH/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://maoserlo.github.io/2017/10/30/GitHub搭建博客配置SSH/　　作者: Maoser.Lo" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/11/10/Java学习笔记（一）/" title="Java学习笔记（一）">https://maoserlo.github.io/2017/11/10/Java学习笔记（一）/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://maoserlo.github.io/2017/11/10/Java学习笔记（一）/　　作者: Maoser.Lo" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -332,18 +364,18 @@
 
 <nav id="article-nav">
   
-    <a  href="/2017/11/10/Java学习笔记（一）/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2017/12/03/exam平台Java试题阶段（一）/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Java学习笔记（一）
+          exam平台Java试题阶段（一）
         
       </div>
     </a>
   
   
-    <a  href="/2017/10/30/使用Hexo+Github搭建博客/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">使用Hexo+Github搭建博客</div>
+    <a  href="/2017/10/30/GitHub搭建博客配置SSH/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">GitHub搭建博客配置SSH</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -355,7 +387,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">1.</span> <span class="toc-text">正文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置SSH-keys"><span class="toc-number">2.</span> <span class="toc-text">设置SSH keys</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-检查是否存在SSH"><span class="toc-number">2.1.</span> <span class="toc-text">1.检查是否存在SSH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-生成SSH"><span class="toc-number">2.2.</span> <span class="toc-text">2.生成SSH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-添加SSH-key到Github账户"><span class="toc-number">2.3.</span> <span class="toc-text">3.添加SSH key到Github账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-最后的部署"><span class="toc-number">2.4.</span> <span class="toc-text">4.最后的部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-注意"><span class="toc-number">2.5.</span> <span class="toc-text">5.注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-致谢"><span class="toc-number">2.6.</span> <span class="toc-text">6.致谢</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">1.</span> <span class="toc-text">正文</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java笔记"><span class="toc-number"></span> <span class="toc-text">Java笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Java-简介"><span class="toc-number">1.</span> <span class="toc-text">一、Java 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-1995sun公司正式发布java第一个版本"><span class="toc-number">1.0.0.0.1.</span> <span class="toc-text">1.1995sun公司正式发布java第一个版本</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-Java开发工具："><span class="toc-number">1.0.0.0.2.</span> <span class="toc-text">2.Java开发工具：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-JDK："><span class="toc-number">1.0.0.0.3.</span> <span class="toc-text">3.JDK：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-jre是java运行环境，运行java需要配置jre环境"><span class="toc-number">1.0.0.0.4.</span> <span class="toc-text">4.jre是java运行环境，运行java需要配置jre环境</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-jdk配置：添加环境变量（见附一win10环境配制）"><span class="toc-number">1.0.0.0.5.</span> <span class="toc-text">5.jdk配置：添加环境变量（见附一win10环境配制）</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、java方法"><span class="toc-number">2.</span> <span class="toc-text">二、java方法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-方法：完成特定功能的代码块"><span class="toc-number">2.0.0.0.1.</span> <span class="toc-text">1.方法：完成特定功能的代码块</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-方法就是函数"><span class="toc-number">2.0.0.0.2.</span> <span class="toc-text">2.方法就是函数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-方法格式："><span class="toc-number">2.0.0.0.3.</span> <span class="toc-text">3.方法格式：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-详细解释："><span class="toc-number">2.0.0.0.4.</span> <span class="toc-text">4.详细解释：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-方法的执行特点：不调用，不执行"><span class="toc-number">2.0.0.0.5.</span> <span class="toc-text">5.方法的执行特点：不调用，不执行</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-方法的调用方式："><span class="toc-number">2.0.0.0.6.</span> <span class="toc-text">6.方法的调用方式：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7-方法的注意事项："><span class="toc-number">2.0.0.0.7.</span> <span class="toc-text">7.方法的注意事项：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、面向对象"><span class="toc-number">3.</span> <span class="toc-text">三、面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-面向对象：面向对象是基于面向过程的编程思想"><span class="toc-number">3.0.0.0.1.</span> <span class="toc-text">1.面向对象：面向对象是基于面向过程的编程思想</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-面向对象的思想特点："><span class="toc-number">3.0.0.0.2.</span> <span class="toc-text">2.面向对象的思想特点：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-类与对象"><span class="toc-number">3.0.0.0.3.</span> <span class="toc-text">3.类与对象:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-类的定义及使用"><span class="toc-number">3.0.0.0.4.</span> <span class="toc-text">4.类的定义及使用</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -426,13 +458,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2017/11/10/Java学习笔记（一）/" title="上一篇: Java学习笔记（一）">
+            <a  href="/2017/12/03/exam平台Java试题阶段（一）/" title="上一篇: exam平台Java试题阶段（一）">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2017/10/30/使用Hexo+Github搭建博客/" title="下一篇: 使用Hexo+Github搭建博客">
+            <a  href="/2017/10/30/GitHub搭建博客配置SSH/" title="下一篇: GitHub搭建博客配置SSH">
                 <i class="fa fa-angle-right"></i>
             </a>
         
