@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>exam平台Java试题阶段（二） | 空旷在远方</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="exam平台Java试题阶段（二）： 抽象封装思想、类和对象">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="exam平台Java试题阶段（二）">
+<meta property="og:url" content="https://maoserlo.github.io/2017/12/03/exam平台Java试题阶段（二）/index.html">
+<meta property="og:site_name" content="空旷在远方">
+<meta property="og:description" content="exam平台Java试题阶段（二）： 抽象封装思想、类和对象">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.imgur.com/fIN9FKG.png">
+<meta property="og:image" content="https://i.imgur.com/TLw1LE0.png">
+<meta property="og:image" content="https://i.imgur.com/Hu1nQ4g.png">
+<meta property="og:updated_time" content="2017-12-04T12:03:20.850Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="exam平台Java试题阶段（二）">
+<meta name="twitter:description" content="exam平台Java试题阶段（二）： 抽象封装思想、类和对象">
+<meta name="twitter:image" content="https://i.imgur.com/fIN9FKG.png">
+  
+    <link rel="alternative" href="/atom.xml" title="空旷在远方" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Maoser.Lo</a></h1>
+        </hgroup>
+        
+        <p class="header-subtitle">迎着阳光，一路向前</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">文章</a></li>
+                        
+                            <li><a  href="/about/">关于</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/maoserlo/maoserlo.github.io" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/u/6109561154?refer_flag=1001030101_" title="weibo">weibo</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/kali/" style="font-size: 10px;">kali</a> <a href="/tags/博客/" style="font-size: 15px;">博客</a>
+                    </div>
+                </section>
+                
+                
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Maoser.Lo</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Maoser.Lo</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">迎着阳光，一路向前</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">文章</a></li>
+                
+                    <li><a href="/about/">关于</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/maoserlo/maoserlo.github.io" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/6109561154?refer_flag=1001030101_" title="weibo">weibo</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-exam平台Java试题阶段（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2017/12/03/exam平台Java试题阶段（二）/" class="article-date">
+      <time datetime="2017-12-03T14:26:00.000Z" itemprop="datePublished">2017-12-03</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      exam平台Java试题阶段（二）
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong> exam平台Java试题阶段（二）：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>抽象封装思想、类和对象<br><a id="more"></a></excerpt></p>
+<p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><p>###以下为过程化考试平台Java练习题，代码是自己写的，由于我的水平很有限，不免有不妥之处，欢迎指正赐教，谢谢！###</p>
+<h4 id="1-en-2017-sw-p2-001-Define-a-stock-class"><a href="#1-en-2017-sw-p2-001-Define-a-stock-class" class="headerlink" title="1.en 2017 sw_ p2_001 Define a stock class"></a>1.en<em> 2017</em> sw_ p2_001 Define a stock class</h4><p><strong>此题代码能够在eclipse中运行，但在exam编译器上编译结果为0分，请大神赐教！</strong></p>
+<p>Design a class named Stock that contains:</p>
+<p>■ A private string data field named symbol for the stock’s symbol.</p>
+<p>■ A private double data field named previousClosingPrice that stores the stock price for the previous day.</p>
+<p>■ A private double data field named currentPrice that stores the stock price for the current time.</p>
+<p>■ A constructor that creates a stock with the specified symbol.（The first constructor）</p>
+<p>■ A constructor that creates a stock with the specified symbol, previousClosingPrice and currentPrice . This constructor must use this to invoke the first constructor to initialize the symbol.</p>
+<p>■ Setters and getters for previousClosingPrice and currentPrice.</p>
+<p>■A method named getChangePercent() that returns the percentage changed from previousClosingPrice to currentPrice.</p>
+<p>■A method named printStockInfo() that print the stock info including symbol, previousClosingPrice , currentPrice and changed percent. The change percent retains 2 decimal places and end with % sign.The print example is :</p>
+<p>■ Since the Main class can not be modified so you define the Stock class must base on the invoking method code in the main method.</p>
+<p>SOHU 100 90</p>
+<p>Stock:SOHU</p>
+<p>Previous Closing Price:100.0</p>
+<p>Current Price:90.0</p>
+<p>Price Change:-10.00%</p>
+<p>■ Complete the code in the main method according to the comments.</p>
+<p>Output example：</p>
+<p>Enter the stock’s symbol, previousClosisngPrice and currentPrice:</p>
+<p>SKY 34.5 36.23</p>
+<p>Stock:SKY</p>
+<p>Previous Closing Price:34.5</p>
+<p>Current Price:36.23</p>
+<p>Price Change:5.01%</p>
+<p>Stock:SINA</p>
+<p>Previous Closing Price:89.5</p>
+<p>Current Price:98.4</p>
+<p>Price Change:9.94%</p>
+<pre><code>import java.util.Scanner;
+/******start******/
+class Stock {
+  private String symbol;
+  private double previousClosingPrice;
+  private double currentPrice;
+
+  public Stock(String newSymbol)
+  {
+    this.symbol = newSymbol;
+  }
+  public void setSymbol(String symbol){
+      this.symbol= symbol;
+  }
+  public String getSymbol(){
+      return symbol;
+  }
+  public double getChangePercent()
+  {
+    return (currentPrice - previousClosingPrice)/previousClosingPrice;
+  }
+
+  public double getPreviousClosingPrice()
+  {
+    return previousClosingPrice;
+  }
+
+  public void setPreviousClosingPrice(double previous)
+  {
+    this.previousClosingPrice = previous;
+  }
+
+  public double getCurrentPrice()
+  {
+    return currentPrice;
+  }
+
+  public void setCurrentPrice(double current)
+  {
+    this.currentPrice = current;
+  }
+  public void printStockInfo(){
+        System.out.println(&quot;Stock:&quot; + getSymbol());
+        System.out.println(&quot;Previous Closing Price:&quot; + getPreviousClosingPrice());
+        System.out.println(&quot;Current Price:&quot; + getCurrentPrice());
+        System.out.println(&quot;Price Change:&quot; + String.format(&quot;%.2f&quot;, getChangePercent() * 100) + &quot;%&quot;);
+  }
+}
+
+/******end******/
+public class Main {
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println(&quot;Enter the stock&apos;s symbol, previousClosisngPrice and currentPrice:&quot;);
+    String symbol = scanner.next();
+    double previousClosingPrice = scanner.nextDouble();
+    double currentPrice = scanner.nextDouble();
+   /******start******/
+    //create a stock instance using the user enter data and invoke printStockInfo method to print stock info.
+
+           Stock stock1 = new Stock(&quot;SKY&quot;);
+        stock1.setPreviousClosingPrice(34.5);
+        stock1.setCurrentPrice(36.23);
+        stock1.printStockInfo();
+
+    /******end******/
+    Stock stock2 = new Stock(&quot;SINA&quot;);
+    stock2.setPreviousClosingPrice(89.5);
+    stock2.setCurrentPrice(98.4);
+    stock2.printStockInfo();
+ }
+}
+</code></pre><h4 id="2-en-2017-sw-p2-002-Design-MyInteger-class"><a href="#2-en-2017-sw-p2-002-Design-MyInteger-class" class="headerlink" title="2.en 2017 sw_ p2_002 Design MyInteger class"></a>2.en<em> 2017</em> sw_ p2_002 Design MyInteger class</h4><p>Design a class named MyInteger. The class contains:</p>
+<p>■ An private int data field named value that stores the int value represented by this object.</p>
+<p>■ A constructor MyInteger(int) that creates a MyInteger object for the specified int value.</p>
+<p>■ A getter method that returns the int value.</p>
+<p>■ The methods isEven() and isOdd() that return true if the value in this object is even or odd respectively.</p>
+<p>■ The static methods isEven(int) and isOdd(int) that return true if the specified value is even or odd respectively.</p>
+<p>■ The static methods isEven(MyInteger) and isOdd(MyInteger) that return true if the specified value is even or odd, respectively.</p>
+<p>■ The methods equals(MyInteger) that return true if the value in this object is equal to the specified value.</p>
+<p>■ A static method parseInt(String) that converts a string into an int value.</p>
+<p>■ Since the Main class can not be modified so you define the MyInteger class must base on the invoking method code in the main method.</p>
+<p>Output example:</p>
+<p>Enter a int number to create MyInteger object:</p>
+<p>35 901</p>
+<p>Enter a string which can transform to a int:</p>
+<p>myInteger1 is even? false</p>
+<p>myInteger1 is odd? true</p>
+<p>myInteger2 is even? false</p>
+<p>myInteger1 is equal to myInteger2? false</p>
+<p>5 is even? false</p>
+<p>9 is odd? true</p>
+<p>Enter a int number to create MyInteger object:</p>
+<p>55 55</p>
+<p>Enter a string which can transform to a int:</p>
+<p>myInteger1 is even? false</p>
+<p>myInteger1 is odd? true</p>
+<p>myInteger2 is even? false</p>
+<p>myInteger1 is equal to myInteger2? true</p>
+<p>5 is even? false</p>
+<p>9 is odd? true</p>
+<pre><code>import java.util.Scanner;
+/******start******/
+
+class MyInteger{
+private int value;
+public MyInteger(int value){
+    this.value=value;
+}
+public int getter(){
+    return value;
+}
+
+public boolean isEven(){
+    return isEven(this.value);
+}
+boolean isOdd(){
+    return isOdd(this.value);
+}
+
+static public boolean isEven(int value){
+    return value%2==0;
+}
+static public boolean isOdd(int value){
+    return value%2!=0;
+}
+
+static public boolean isEven(MyInteger value){
+    return value.isEven();
+}
+static public boolean isOdd(MyInteger value){
+    return value.isOdd();
+}
+public boolean equals(int value){
+    return this.value==value;
+}
+public boolean equals(MyInteger value){
+    return value.equals(this.value);
+}
+public static int parseInt(char[] cs){
+    String s=new String(cs);
+    return parseInt(s);
+}
+
+public static int parseInt(String s){
+    return Integer.valueOf(s);
+}
+
+}
+
+/******end******/
+public class Main {
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println(&quot;Enter a int number to create MyInteger object:&quot;);
+    int value = scanner.nextInt();
+    System.out.println(&quot;Enter a string which can transform to a int:&quot;);
+    String str = scanner.next();
+    MyInteger myInteger1 = new MyInteger(value);
+    System.out.println(&quot;myInteger1 is even? &quot; + myInteger1.isEven());
+    System.out.println(&quot;myInteger1 is odd? &quot; + myInteger1.isOdd());
+    MyInteger myInteger2 = new MyInteger(MyInteger.parseInt(str));
+    System.out.println(&quot;myInteger2 is even? &quot; + MyInteger.isEven(myInteger2) );
+    System.out.println(&quot;myInteger1 is equal to myInteger2? &quot;+myInteger1.equals(myInteger2));
+    System.out.println(&quot;5 is even? &quot; + MyInteger.isEven(5));
+    System.out.println(&quot;9 is odd? &quot; + MyInteger.isOdd(9));
+    scanner.close();
+}
+}
+</code></pre><h4 id="3-en-2017-sw-p2-003-Design-MyPoint-class"><a href="#3-en-2017-sw-p2-003-Design-MyPoint-class" class="headerlink" title="3.en 2017 sw_ p2_003 Design MyPoint class"></a>3.en<em> 2017</em> sw_ p2_003 Design MyPoint class</h4><p>Design a class named MyPoint to represent a point with x-coordinates and y-coordinates. The class contains:</p>
+<p>■ The private data fields(double) x and y that represent the coordinates with get methods.</p>
+<p>■ A no-arg constructor that creates a point (0, 0).</p>
+<p>■ A constructor that constructs a point with specified coordinates.</p>
+<p>■ Two get methods for the data fields x and y, respectively.</p>
+<p>■ A method named distance(MyPoint anotherPoint) that returns the distance from this point to another point of the MyPoint type.</p>
+<p>■ A method named distance(double x,double y) that returns the distance from this point to another point with specified x- and y-coordinates.</p>
+<p>■ A static method named distance(MyPoint p1,MyPoint p2) that returns the distance from the p1  point to another point p2.</p>
+<p>■ Since the Main class can not be modified so you define the MyPoint class must base on the invoking method code in the main method.</p>
+<p>Tips: The coordinates of the two points are (x1,y1) and (x2,y2) then the formula for calculating the distance between two points is</p>
+<p>d=√[(x1-x2)²+(y1-y2)²]</p>
+<p>output example：</p>
+<p>Enter x-coordinates and y-coordinates:</p>
+<p>13.5 22</p>
+<p>The distance between p1 and p2 is:28.443101096751036</p>
+<p>The distance between p2 and p3 is:3.6138621999185303</p>
+<p>The distance between p1 and p3 is:25.811818998280614</p>
+<pre><code>import java.util.Scanner;
+/******start******/
+
+class MyPoint {
+private double x;
+private double y;
+public double getX(){
+    return x;
+}
+public double getY(){
+    return y;
+}
+public MyPoint(){
+    x=0;
+    y=0;
+}
+public MyPoint(double x,double y){
+    this.x=x;
+    this.y=y;
+}
+
+public double distance (MyPoint anotherPoint){
+    return  Math.hypot((x-anotherPoint.getX()),(y-anotherPoint.getY()));
+    }
+
+public double distance (double x,double y){
+    // d=Math.hypot((x-a),(y-b));
+    return Math.sqrt((this.x-x)*(this.x-x)+(this.y-y)*(this.y-y));
+    }
+
+static public double distance(MyPoint p1,MyPoint p2){
+    return Math.hypot((p1.getX()-p2.getX()), (p1.getY()-p2.getY()));
+}
+}
+
+/******end******/
+public class Main {
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println(&quot;Enter x-coordinates and y-coordinates:&quot;);
+    double x = scanner.nextDouble();
+    double y = scanner.nextDouble();
+    MyPoint p1 = new MyPoint();
+    MyPoint p2 = new MyPoint(12.6, 25.5);
+    MyPoint p3 = new MyPoint(x, y);
+    System.out.println(&quot;The distance between p1 and p2 is:&quot; + MyPoint.distance(p1, p2));
+    System.out.println(&quot;The distance between p2 and p3 is:&quot; + p3.distance(p2.getX(), p2.getY()));
+    System.out.println(&quot;The distance between p1 and p3 is:&quot; + p3.distance(p1));
+    scanner.close();
+}
+}
+</code></pre><h4 id="4-en-2017-sw-p2-004-Design-a-class-Fan"><a href="#4-en-2017-sw-p2-004-Design-a-class-Fan" class="headerlink" title="4.en 2017 sw_ p2_004 Design a class Fan"></a>4.en<em> 2017</em> sw_ p2_004 Design a class Fan</h4><p>Design a class named Fan to represent a fan. The class contains:</p>
+<p>■ Three int constants named STOP, SLOW and FAST with the values 0, 1, and 2 to denote the fan speed.</p>
+<p>■ A private String data field named number that specifies the number of the fan.</p>
+<p>■ A private int data field named speed that specifies the speed of the fan.</p>
+<p>■ A private boolean data field named on that specifies whether the fan is on.</p>
+<p>■ A private double data field named radius that specifies the radius of the fan.</p>
+<p>■ A string data field named color that specifies the color of the fan.</p>
+<p>■ The setter and getter methods for data fields number, speed, radius and on. If the fan is turn on set speed is SLOW and if the fan is turn off then set speed is STOP.</p>
+<p>■ A no-arg constructor Fan() that creates a default fan. It is off and it’s default number is “#1”, default speed is STOP, default radius is 5 and default color is white</p>
+<p>■ A constructor Fan(String,double,String) that creates a Fan object for the specified number, radius and color, the fan is off and speed is STOP.</p>
+<p>■ A method named toString() that returns a string description for the fan. If the fan is on, the method returns the fan number, speed, color, and radius in one combined string. If the fan is not on, the method returns the string “xxx fan is off” in one combined string, xxx is the fan’s number.</p>
+<p>■ Since the Main class can not be modified so you define the Fan class must base on the invoking method code in the main method.</p>
+<p>output example:</p>
+<p>Enter the number, radius and color to create a fan:</p>
+<pre><code>#3 10 blue
+
+#1 fan is off
+
+#3 fan speed is 1 color is blue radius is 10.0
+
+#1 fan speed is 1 color is white radius is 5.0
+
+#3 fan speed is 2 color is blue radius is 10.0
+</code></pre><p>代码如下：</p>
+<pre><code>import java.util.Scanner;
+/******start******/
+
+class Fan{
+public static final int STOP=0;
+public static final int SLOW=1;
+public static final int FAST=2;
+
+private String number;
+private int speed;
+private boolean on;
+private double radius;
+public String color;
+
+public int getSpeed() {
+      return speed;
+      }
+public void setSpeed(int speed) {
+      this.speed = speed;
+    }
+public boolean isOn() {
+      return on;
+    }
+public void setOn(boolean on) {
+      this.on = on;
+    }
+public double getRadius() {
+      return radius;
+    }
+public void setRadius(double radius) {
+      this.radius = radius;
+    }
+public String getColor() {
+      return color;
+    }
+public void setColor(String color) {
+      this.color = color;
+    }
+
+Fan(){
+    number=&quot;#1&quot;;
+    speed=SLOW;
+    radius=5;
+    color=&quot;white&quot;;
+}
+Fan(String number,double radius,String color){
+    this.number=number;
+    this.radius=radius;
+    this.color=color;
+    speed=SLOW;
+}
+
+public String toString() {
+      if(on==true){
+       return number+&quot; fan speed is &quot;+speed+&quot; color is &quot;+color+&quot; radius is &quot;+radius;
+      }
+      else{
+       return number+&quot; fan is off&quot;;
+      }
+}
+}
+
+/******end******/
+public class Main {
+public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    Scanner scanner = new Scanner(System.in);
+    System.out.println(&quot;Enter the number, radius and color to create a fan:&quot;);
+    String number = scanner.next();
+    double radius = scanner.nextDouble();
+    String color = scanner.next();
+    Fan fan1 = new Fan();
+    Fan fan2 = new Fan(number,radius, color);
+    fan2.setOn(true);
+    System.out.println(fan1.toString());
+    System.out.println(fan2.toString());
+    fan1.setOn(true);
+    fan2.setSpeed(Fan.FAST);
+    System.out.println(fan1.toString());
+    System.out.println(fan2.toString());
+}
+}
+</code></pre><h4 id="5-en-2017-sw-p2-005-Design-a-RegulaiPolygon"><a href="#5-en-2017-sw-p2-005-Design-a-RegulaiPolygon" class="headerlink" title="5.en 2017 sw_ p2_005 Design a RegulaiPolygon"></a>5.en<em> 2017</em> sw_ p2_005 Design a RegulaiPolygon</h4><p>In an n-sided regular polygon(n面规则多边形), all sides have the same length and all angles have the same degree (i.e., the polygon(多边形) is both equilateral-等边 and equiangular-等角). Design a class named RegularPolygon (规则多边形) that contains:</p>
+<p>■ A private int data field named n that defines the number of sides in the polygon with default value 3.</p>
+<p>■ A private double data field named side that stores the length of the side with default value 2.</p>
+<p>■ A private double data field named x that defines the x-coordinate(x坐标) of the polygon’s center with default value 0.</p>
+<p>■ A private double data field named y that defines the y-coordinate(y坐标) of the polygon’s center with default value 0.</p>
+<p>■ A no-arg constructor RegularPolygon() that creates a regular polygon with default values.</p>
+<p>■ A constructor RegularPolygon(int,double) that creates a regular polygon with the specified number of sides and length of side, centered at (0, 0).</p>
+<p>■ A constructor RegularPolygon(int,double,double,double) that creates a regular polygon with the specified number of sides, length of side, and x-and y-coordinates.</p>
+<p>■ The setter and getter methods for all data fields.</p>
+<p>■ The method getPerimeter() that returns the perimeter of the polygon.</p>
+<p>■ The method getArea() that returns the area of the polygon. The formula for computing the area of a regular polygon is：</p>
+<p><img src="https://i.imgur.com/fIN9FKG.png" alt=""></p>
+<p>■ Since the Main class can not be modified so you define the RegularPolygon class must base on the invoking method code in the main method.</p>
+<p>Output examples:</p>
+<p>Enter the n, side, x-coordinate and y-coordinate to create a RegularPolygon object:</p>
+<p>5 3 12 20</p>
+<p>Polygon 1 x-coordinate: 0.0 y-coordinate: 0.0</p>
+<p>Polygon 1 perimeter: 6.0</p>
+<p>Polygon 1 area: 1.7320508075688779</p>
+<p>Polygon 2 n: 3</p>
+<p>Polygon 2 side: 5.0</p>
+<p>Polygon 2 perimeter: 15.0</p>
+<p>Polygon 2 area: 10.825317547305486</p>
+<p>Polygon 3 perimeter: 15.0</p>
+<p>Polygon 3 area: 15.484296605300703</p>
+<pre><code>import java.util.Scanner;
+/******start******/
+
+class RegularPolygon{
+//numbers of side
+private int n = 3;
+//length of side
+private double side = 2;
+//坐标
+private double x = 0;
+private double y = 0;
+
+RegularPolygon() {
+}
+RegularPolygon(int n,double side){
+    this.n = n;
+    this.side = side;
+}
+RegularPolygon(int n,double side,double x,double y){
+    this.n = n;
+    this.side = side;
+    this.x = x;
+    this.y = y;
+}
+public int getN() {
+    return n;
+}
+public void setN(int n) {
+    this.n = n;
+}
+public double getSide() {
+    return side;
+}
+public void setSide(double side) {
+    this.side = side;
+}
+public double getX() {
+    return x;
+}
+public void setX(double x) {
+    this.x = x;
+}
+public double getY() {
+    return y;
+}
+public void setY(double y) {
+    this.y = y;
+}
+public double getPerimeter() {
+    return side * n;
+}
+public double getArea() {
+    double temp = this.n * Math.pow(this.side,2);
+    double temp1 = Math.tan(Math.PI / this.n);
+    return temp / (4 * temp1);
+}
+}
+
+/******end******/
+public class Main {
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println(&quot;Enter the n, side, x-coordinate and y-coordinate to create a RegularPolygon object:&quot;);
+    int n = scanner.nextInt();
+    double side = scanner.nextDouble();
+    double x = scanner.nextDouble();
+    double y = scanner.nextDouble();
+    RegularPolygon polygon1 = new RegularPolygon();
+    RegularPolygon polygon2 = new RegularPolygon(3, 5);
+    RegularPolygon polygon3 = new RegularPolygon(n, side, x, y);
+    System.out.println(&quot;Polygon 1 x-coordinate: &quot; + polygon1.getX() + &quot; y-coordinate: &quot; + polygon1.getY());
+    System.out.println(&quot;Polygon 1 perimeter: &quot; + polygon1.getPerimeter());
+    System.out.println(&quot;Polygon 1 area: &quot; + polygon1.getArea());
+    System.out.println(&quot;Polygon 2 n: &quot; + polygon2.getN());
+    System.out.println(&quot;Polygon 2 side: &quot; + polygon2.getSide());
+    System.out.println(&quot;Polygon 2 perimeter: &quot; + polygon2.getPerimeter());
+    System.out.println(&quot;Polygon 2 area: &quot; + polygon2.getArea());
+    System.out.println(&quot;Polygon 3 perimeter: &quot; + polygon3.getPerimeter());
+    System.out.println(&quot;Polygon 3 area: &quot; + polygon3.getArea());
+}
+}
+</code></pre><h4 id="6-en-2017-p1sw-006-DEsign-a-class-namedQuadraticEquation"><a href="#6-en-2017-p1sw-006-DEsign-a-class-namedQuadraticEquation" class="headerlink" title="6.en 2017 p1sw 006 DEsign a class namedQuadraticEquation"></a>6.en<em> 2017</em> p1<em>sw</em> 006 DEsign a class namedQuadraticEquation</h4><p><strong>此题写出来编译之后，只有60分，请大神赐教！</strong></p>
+<p>Design a class named QuadraticEquation for a quadratic equation(二次方程)：ax2+bx+c = 0</p>
+<p>The class contains:</p>
+<p>■ Three private double data fields a, b, and c that represent three coefficients（三个系数a, b和c）.</p>
+<p>■ A constructor for the arguments for a, b, and c, The value of a can not be zero.</p>
+<p>■ Three getter methods for a, b, and c.</p>
+<p>■ A method named getDiscriminant() that returns the value of discriminant(判别式), which is：b2 - 4ac.</p>
+<p>■ The methods named getRoot1() and getRoot2() for returning two roots of the equation. The formulas to calculate roots are following:</p>
+<p><img src="https://i.imgur.com/TLw1LE0.png" alt=""></p>
+<p>These calculate roots methods are useful only if the discriminant is nonnegative.(非负) Let these methods return 0 if the discriminant is negative. And if discriminant is zero then just has one root(r1). If discriminant bigger than zero there has two roots.</p>
+<p>■ Since the Main class can not be modified so you define the RegularPolygon class must base on the invoking method code in the main method.</p>
+<p>Output examples:</p>
+<p>Output examples1:</p>
+<p>Enter a, b, c:</p>
+<p>1 2 1</p>
+<p>The root is -1.0</p>
+<p>Output examples2:</p>
+<p>Enter a, b, c:</p>
+<p>2 9 4</p>
+<p>The roots are 10.0 and -14.5</p>
+<p>Output examples3:</p>
+<p>Enter a, b, c:</p>
+<p>8 2 7</p>
+<p>The equation has no roots</p>
+<pre><code>import java.util.Scanner;
+/******start******/
+
+class QuadraticEquation{
+private double a,b,c;
+public QuadraticEquation(double a,double b,double c){
+    if(a!=0){
+        this.a=a;
+        this.b=b;
+        this.c=c;
+    }
+}
+
+public double getA(){
+    return a;
+}
+public double getB(){
+    return b;
+}
+public double getC(){
+    return c;
+}
+
+public double getDiscriminant(){
+    return (b*b-4*a*c);
+}
+
+public double getRoot1(){
+    return (-b+Math.sqrt(b*b-4*a*c))/(2*a);
+}
+public double getRoot2(){
+    return (-b-Math.sqrt(b*b-4*a*c))/(2*a);
+}
+
+}
+
+/******end******/
+public class Main {
+public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
+    System.out.print(&quot;Enter a, b, c: &quot;);
+    double a = input.nextDouble();
+    double b = input.nextDouble();
+    double c = input.nextDouble();
+    QuadraticEquation equation = new QuadraticEquation(a, b, c);
+    double discriminant = equation.getDiscriminant();
+    if (discriminant &lt; 0) {
+        System.out.println(&quot;The equation has no roots&quot;);
+    } else if (discriminant == 0) {
+        System.out.println(&quot;The root is &quot; + equation.getRoot1());
+    } else // (discriminant &gt;= 0)
+    {
+        System.out.println(&quot;The roots are &quot; + equation.getRoot1() + &quot; and &quot; + equation.getRoot2());
+    }
+}
+}
+</code></pre><h4 id="7-en-2017-p2-001-ex-The-REctangle-class"><a href="#7-en-2017-p2-001-ex-The-REctangle-class" class="headerlink" title="7.en 2017 p2 001 ex The REctangle class"></a>7.en<em> 2017</em> p2<em> 001</em> ex The REctangle class</h4><p>Following the example of the Circle class, design a class named Rectangle to represent a rectangle. The class contains: </p>
+<p>■ Two double data fields named width and height that specify the width and height of the rectangle. The default values are 1 for both width and height.</p>
+<p> ■ A no-arg constructor that creates a default rectangle. </p>
+<p>■ A constructor that creates a rectangle with the specified width and height. </p>
+<p>■ A method named getArea() that returns the area of this rectangle. </p>
+<p>■ A method named getPerimeter() that returns the perimeter.</p>
+<p>Creates two Rectangle objects in the main method of the Main class—. Display the width, height, area, and perimeter of each rectangle in this order:</p>
+<p>The program  output example when it runs in Eclipse:</p>
+<p><img src="https://i.imgur.com/Hu1nQ4g.png" alt=""></p>
+<pre><code>import  java.util.Scanner;
+/******start******/
+//声明定义Rectangle类，去掉public关键字。
+
+class Rectangle{
+public double width;
+public double height;
+public Rectangle(){
+    width=1.0;
+    height=1.0;
+}
+public Rectangle(double width,double height){
+    this.width=width;
+    this.height=height;
+}
+public double getArea(){
+    return width*height;
+}
+public double getPermeter(){
+    return (width+height)*2;
+}
+}
+
+/******end******/
+public class Main{
+public static void main(String[] args){
+       Scanner scanner = new Scanner(System.in);
+       System.out.println(&quot;Enter the width and height of  a rectangle:&quot;);
+       double w= scanner.nextDouble();
+      double h = scanner.nextDouble();
+    /******start******/
+     //使用默认构造方法创建第一个Rectangle对象
+       Rectangle rec1=new Rectangle();
+
+
+      //使用用户输入的高（h）和宽（w）的数据创建第二个Rectangle对象。
+       Rectangle rec2=new Rectangle(w,h);
+
+
+      //分别输出这两个Rectangle对象的宽、高、面积和周长四个值，每个对象的四个值之间用1个空格分开。每个对象的四个数值单独为一行
+      //output example：  sa
+      //1.0 1.0 1.0 4.0
+      //3.0 5.0 15.0 16.0
+
+       System.out.println(rec1.width+&quot; &quot;+rec1.height+&quot; &quot;+rec1.getArea()+&quot; &quot;+rec1.getPermeter());
+       System.out.println(rec2.width+&quot; &quot;+rec2.height+&quot; &quot;+rec2.getArea()+&quot; &quot;+rec2.getPermeter());
+
+
+     //使用默认构造方法创建第一个Rectangle对象
+     //使用用户输入的高（h）和宽（w）的数据创建第二个Rectangle对象。
+
+
+
+      //分别输出这两个Rectangle对象的宽、高、面积和周长四个值，每个对象的四个值之间用1个空格分开。每个对象的四个数值单独为一行
+     //output example：  
+      //1.0 1.0 1.0 4.0
+    //  3.0 5.0 15.0 16.0
+
+         /******end******/
+}
+}
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2017/12/03/exam平台Java试题阶段（二）/">exam平台Java试题阶段（二）</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 Maoser.Lo 的个人博客">Maoser.Lo</a></p>
+        <p><span>发布时间:</span>2017年12月03日 - 22时26分</p>
+        <p><span>最后更新:</span>2017年12月04日 - 20时03分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/12/03/exam平台Java试题阶段（二）/" title="exam平台Java试题阶段（二）">https://maoserlo.github.io/2017/12/03/exam平台Java试题阶段（二）/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://maoserlo.github.io/2017/12/03/exam平台Java试题阶段（二）/　　作者: Maoser.Lo" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="/2017/12/03/exam平台Java试题阶段（一）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          exam平台Java试题阶段（一）
+        
+      </div>
+    </a>
+  
+  
+    <a  href="/2017/11/10/Java学习笔记（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java学习笔记（一）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">1.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#说明："><span class="toc-number">1.1.</span> <span class="toc-text">说明：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-en-2017-sw-p2-001-Define-a-stock-class"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.en 2017 sw_ p2_001 Define a stock class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-en-2017-sw-p2-002-Design-MyInteger-class"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.en 2017 sw_ p2_002 Design MyInteger class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-en-2017-sw-p2-003-Design-MyPoint-class"><span class="toc-number">1.1.3.</span> <span class="toc-text">3.en 2017 sw_ p2_003 Design MyPoint class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-en-2017-sw-p2-004-Design-a-class-Fan"><span class="toc-number">1.1.4.</span> <span class="toc-text">4.en 2017 sw_ p2_004 Design a class Fan</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-en-2017-sw-p2-005-Design-a-RegulaiPolygon"><span class="toc-number">1.1.5.</span> <span class="toc-text">5.en 2017 sw_ p2_005 Design a RegulaiPolygon</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-en-2017-p1sw-006-DEsign-a-class-namedQuadraticEquation"><span class="toc-number">1.1.6.</span> <span class="toc-text">6.en 2017 p1sw 006 DEsign a class namedQuadraticEquation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-en-2017-p2-001-ex-The-REctangle-class"><span class="toc-number">1.1.7.</span> <span class="toc-text">7.en 2017 p2 001 ex The REctangle class</span></a></li></ol></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/2017/12/03/exam平台Java试题阶段（一）/" title="上一篇: exam平台Java试题阶段（一）">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2017/11/10/Java学习笔记（一）/" title="下一篇: Java学习笔记（一）">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/12/03/exam平台Java试题阶段（一）/">exam平台Java试题阶段（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/03/exam平台Java试题阶段（二）/">exam平台Java试题阶段（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/10/Java学习笔记（一）/">Java学习笔记（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/30/GitHub搭建博客配置SSH/">GitHub搭建博客配置SSH</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/30/使用Hexo+Github搭建博客/">使用Hexo+Github搭建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/30/Kali更新源/">kali更新源</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 Maoser.Lo
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
